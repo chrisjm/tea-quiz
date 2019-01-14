@@ -26,9 +26,11 @@ function Quiz(props) {
       <Question content={props.question} />
       <FormControl component="fieldset">
         {props.answerOptions.map(renderAnswerOptions)}
-        <Button variant="contained" color="primary" onClick={props.handleClick}>
-          Next
-        </Button>
+        <div>
+          <Button variant="contained" color="primary" onClick={props.handleClick}>
+            Next
+          </Button>
+        </div>
       </FormControl>
     </div>
   );

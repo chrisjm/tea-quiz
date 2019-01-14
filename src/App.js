@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Quiz from './components/Quiz';
-import Result from './components/Result'
+import Result from './components/Result';
+import Intro from './components/Intro';
 import logo from './logo.svg';
 import './App.css';
 
@@ -17,6 +18,7 @@ class App extends Component {
       counter: 0,
       question: '',
       showResults: false,
+      showIntroduction: true,
     };
   }
 
@@ -53,9 +55,25 @@ class App extends Component {
     if (counter + 1 === quizQuestions.length) {
       this.setState({ showResults: true });
     } else {
-      setTimeout(this.setNextQuestion, 300);
+      this.setNextQuestion();
     }
   };
+
+  startQuiz = () => {
+    this.setState({ showIntroduction: false });
+  };
+
+  restartQuiz = () => {
+    this.setState({
+      answer: '',
+      answerOptions: quizQuestions[0].answerOptions,
+      correctAnswers: 0,
+      counter: 0,
+      question: quizQuestions[0].question,
+      showResults: false,
+      showIntroduction: true,
+    });
+  }
 
   render() {
     return (
@@ -63,7 +81,9 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        {!this.state.showResults ? (
+        {this.state.showIntroduction ? (
+          <Intro handleClick={this.startQuiz} />
+        ) : !this.state.showResults ? (
           <Quiz
             answer={this.state.answer}
             answerOptions={this.state.answerOptions}
@@ -74,7 +94,7 @@ class App extends Component {
             handleClick={this.handleClick}
           />
         ) : (
-          <Result questionTotal={quizQuestions.length} correctAnswers={this.state.correctAnswers} />
+          <Result questionTotal={quizQuestions.length} correctAnswers={this.state.correctAnswers}  handleRestart={this.restartQuiz} />
         )}
       </div>
     );

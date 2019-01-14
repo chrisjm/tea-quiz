@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Circle from 'react-circle';
 import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import PropTypes from 'prop-types'
 
 class Result extends Component {
   constructor(props) {
@@ -20,12 +22,12 @@ class Result extends Component {
   }
 
   render() {
-    const { correctAnswers, questionTotal } = this.props
+    const { correctAnswers, questionTotal, handleRestart } = this.props
 
     return (
       <div>
         <Typography variant="h4" gutterBottom>
-          You answered {correctAnswers} correct out of {questionTotal}
+          You answered {correctAnswers} correct out of {questionTotal}!
         </Typography>
         <Circle
           animate={true}
@@ -45,9 +47,20 @@ class Result extends Component {
           showPercentage={true}
           showPercentageSymbol={true}
         />
+        <div>
+          <Button variant="contained" color="primary" onClick={handleRestart}>
+            Restart Quiz
+          </Button>
+        </div>
       </div>
     );
   }
+}
+
+Result.propTypes = {
+  handleRestart: PropTypes.func.isRequired,
+  correctAnswers: PropTypes.number.isRequired,
+  questionTotal: PropTypes.number.isRequired,
 }
 
 export default Result;
