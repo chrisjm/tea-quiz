@@ -79,7 +79,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="Wandering Leaf Studios logo" />
+          <a href="https://wanderingleafstudios.com">
+            <img src={logo} className="App-logo" alt="Wandering Leaf Studios logo" />
+          </a>
         </header>
         <div style={{ marginBottom: `2rem` }}>
           {this.state.showIntroduction ? (
