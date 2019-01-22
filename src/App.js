@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
 import Intro from './components/Intro';
-import logo from './logo.svg';
+import logo from './white_logo_transparent_background.svg';
 import './App.css';
 
 import quizQuestions from './api/quizQuestions';
@@ -73,29 +73,45 @@ class App extends Component {
       showResults: false,
       showIntroduction: true,
     });
-  }
+  };
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="Wandering Leaf Studios logo" />
         </header>
-        {this.state.showIntroduction ? (
-          <Intro handleClick={this.startQuiz} />
-        ) : !this.state.showResults ? (
-          <Quiz
-            answer={this.state.answer}
-            answerOptions={this.state.answerOptions}
-            counter={this.state.counter}
-            question={this.state.question}
-            questionTotal={quizQuestions.length}
-            onAnswerSelected={this.handleAnswerSelected}
-            handleClick={this.handleClick}
-          />
-        ) : (
-          <Result questionTotal={quizQuestions.length} correctAnswers={this.state.correctAnswers}  handleRestart={this.restartQuiz} />
-        )}
+        <div style={{ marginBottom: `2rem` }}>
+          {this.state.showIntroduction ? (
+            <Intro handleClick={this.startQuiz} />
+          ) : !this.state.showResults ? (
+            <Quiz
+              answer={this.state.answer}
+              answerOptions={this.state.answerOptions}
+              counter={this.state.counter}
+              question={this.state.question}
+              questionTotal={quizQuestions.length}
+              onAnswerSelected={this.handleAnswerSelected}
+              handleClick={this.handleClick}
+            />
+          ) : (
+            <Result
+              questionTotal={quizQuestions.length}
+              correctAnswers={this.state.correctAnswers}
+              handleRestart={this.restartQuiz}
+            />
+          )}
+        </div>
+        <footer style={{ margin: `2rem auto`, fontSize: `0.75rem` }}>
+          Built with <span aria-label="heart" role="img">❤️</span> using{' '}
+          <a className="App-link" href="https://reactjs.org/">
+            ReactJS
+          </a>{' '}
+          and{' '}
+          <a className="App-link" href="https://material-ui.com/">
+            Material-UI
+          </a>
+        </footer>
       </div>
     );
   }

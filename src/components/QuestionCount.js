@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 
 function QuestionCount(props) {
   return (
-    <Typography variant="body1" gutterBottom>
+    <Typography gutterBottom>
       Question <strong>{props.counter + 1}</strong> of <strong>{props.total}</strong>
     </Typography>
   );

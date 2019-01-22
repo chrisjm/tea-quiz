@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
 import Circle from 'react-circle';
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
-import PropTypes from 'prop-types'
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+import { MuiThemeProvider } from '@material-ui/core';
+import theme from '../theme';
 
 class Result extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      progress: 0
+      progress: 0,
     };
   }
 
   componentDidMount() {
-    const { correctAnswers, questionTotal } = this.props
+    const { correctAnswers, questionTotal } = this.props;
     const progress = Math.floor((correctAnswers / questionTotal) * 100);
-    setTimeout(() => this.setState({
-      progress: progress
-    }), 300)
+    setTimeout(
+      () =>
+        this.setState({
+          progress: progress,
+        }),
+      300
+    );
   }
 
   render() {
-    const { correctAnswers, questionTotal, handleRestart } = this.props
+    const { correctAnswers, questionTotal, handleRestart } = this.props;
 
     return (
-      <div>
-        <Typography variant="h4" gutterBottom>
+      <MuiThemeProvider theme={theme}>
+        <Typography variant="h3" gutterBottom>
           You answered {correctAnswers} correct out of {questionTotal}!
         </Typography>
         <Circle
@@ -36,7 +42,7 @@ class Result extends Component {
           size="240"
           lineWidth="25"
           progress={this.state.progress}
-          progressColor="rgb(76, 154, 255)"
+          progressColor="#588F27"
           bgColor="#ecedf0"
           textColor="#6b778c"
           textStyle={{
@@ -47,12 +53,12 @@ class Result extends Component {
           showPercentage={true}
           showPercentageSymbol={true}
         />
-        <div>
+        <div style={{ marginTop: `1rem` }}>
           <Button variant="contained" color="primary" onClick={handleRestart}>
             Restart Quiz
           </Button>
         </div>
-      </div>
+      </MuiThemeProvider>
     );
   }
 }
@@ -61,6 +67,6 @@ Result.propTypes = {
   handleRestart: PropTypes.func.isRequired,
   correctAnswers: PropTypes.number.isRequired,
   questionTotal: PropTypes.number.isRequired,
-}
+};
 
 export default Result;
