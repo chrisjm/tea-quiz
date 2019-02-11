@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Circle from 'react-circle';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-import { MuiThemeProvider } from '@material-ui/core';
+import Circle from 'react-circle';
+import { Button, MuiThemeProvider, Typography } from '@material-ui/core';
+
+// Assets
 import theme from '../theme';
 
 class Result extends Component {
@@ -32,7 +32,7 @@ class Result extends Component {
 
     return (
       <MuiThemeProvider theme={theme}>
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h4" gutterBottom>
           You answered {correctAnswers} correct out of {questionTotal}!
         </Typography>
         <Circle
@@ -64,8 +64,8 @@ class Result extends Component {
 }
 
 Result.propTypes = {
-  handleRestart: PropTypes.func.isRequired,
   correctAnswers: PropTypes.number.isRequired,
+  handleRestart: PropTypes.func.isRequired,
   questionTotal: PropTypes.number.isRequired,
 };
 

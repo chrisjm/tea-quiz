@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { FormControlLabel, Radio } from '@material-ui/core';
 
 function AnswerOptions(props) {
   return (
     <FormControlLabel
       value={props.answerValue}
-      control={<Radio />}
+      control={<Radio color="primary" />}
       label={props.answerContent}
       name="answerGroup"
       id={props.answerValue}

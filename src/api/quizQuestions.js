@@ -1,6 +1,6 @@
 const quizQuestions = [
   {
-    question: 'All tea begins as fresh Camellia sinensis leaves.',
+    question: 'All tea begins as fresh tea leaves. 🍃',
     answerOptions: [
       {
         content: 'True',

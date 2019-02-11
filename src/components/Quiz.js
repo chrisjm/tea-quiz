@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FormControl from '@material-ui/core/FormControl';
-import Button from '@material-ui/core/Button';
-import theme from '../theme';
-import Question from './Question';
-import QuestionCount from './QuestionCount';
 import AnswerOption from './AnswerOption';
-import { MuiThemeProvider } from '@material-ui/core';
+import Question from './Question';
+import { FormControl, MuiThemeProvider } from '@material-ui/core';
+
+// Assets
+import theme from '../theme';
 
 function Quiz(props) {
   function renderAnswerOptions(key) {
@@ -23,16 +22,8 @@ function Quiz(props) {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <QuestionCount counter={props.counter} total={props.questionTotal} />
       <Question content={props.question} />
-      <FormControl component="fieldset">
-        {props.answerOptions.map(renderAnswerOptions)}
-        <div style={{ marginTop: `1rem` }}>
-          <Button variant="contained" color="primary" onClick={props.handleClick}>
-            Next
-          </Button>
-        </div>
-      </FormControl>
+      <FormControl component="fieldset">{props.answerOptions.map(renderAnswerOptions)}</FormControl>
     </MuiThemeProvider>
   );
 }
@@ -40,11 +31,8 @@ function Quiz(props) {
 Quiz.propTypes = {
   answer: PropTypes.string.isRequired,
   answerOptions: PropTypes.array.isRequired,
-  counter: PropTypes.number.isRequired,
   question: PropTypes.string.isRequired,
-  questionTotal: PropTypes.number.isRequired,
   onAnswerSelected: PropTypes.func.isRequired,
-  handleClick: PropTypes.func.isRequired,
 };
 
 export default Quiz;

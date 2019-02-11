@@ -1,12 +1,12 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-logo {
+.logo {
   height: 10vmin;
 }
 
-.App-header {
+.header {
   background-color: #588F27;
   display: flex;
   padding: 10px;
@@ -18,10 +18,10 @@
   color: white;
 }
 
-.App-link {
+.link {
   color: #588F27;
 }
 
-.App-link-light {
+.link-light {
   color: #ffffff;
 }
