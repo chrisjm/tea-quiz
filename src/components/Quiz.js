@@ -29,7 +29,7 @@ function Quiz(props) {
 }
 
 Quiz.propTypes = {
-  answer: PropTypes.string.isRequired,
+  answer: PropTypes.string,
   answerOptions: PropTypes.array.isRequired,
   question: PropTypes.string.isRequired,
   onAnswerSelected: PropTypes.func.isRequired,
