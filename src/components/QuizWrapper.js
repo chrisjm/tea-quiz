@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import QuestionCount from '../components/QuestionCount';
 import Quiz from '../components/Quiz';
 import Result from '../components/Result';
+import shuffle from 'lodash/shuffle';
 import { Button, Fade, MobileStepper, MuiThemeProvider } from '@material-ui/core';
 
 // Assets
@@ -15,7 +16,6 @@ class QuizWrapper extends Component {
     this.state = {
       activeStep: 0,
       answerOptions: [],
-      correctAnswers: 0,
       selectedAnswers: [],
       fadeIn: false,
       question: '',
@@ -25,7 +25,7 @@ class QuizWrapper extends Component {
 
   componentWillMount() {
     this.setState({
-      answerOptions: quizQuestions[this.state.activeStep].answerOptions,
+      answerOptions: shuffle(quizQuestions[this.state.activeStep].answerOptions),
       fadeIn: true,
       question: quizQuestions[this.state.activeStep].question,
     });
@@ -84,7 +84,7 @@ class QuizWrapper extends Component {
       this.setState({
         activeStep: activeStep,
         answer: '',
-        answerOptions: quizQuestions[activeStep].answerOptions,
+        answerOptions: shuffle(quizQuestions[activeStep].answerOptions),
         question: quizQuestions[activeStep].question,
       });
 
@@ -98,7 +98,7 @@ class QuizWrapper extends Component {
     this.setState({
       activeStep: activeStep,
       answer: '',
-      answerOptions: quizQuestions[activeStep].answerOptions,
+      answerOptions: shuffle(quizQuestions[activeStep].answerOptions),
       question: quizQuestions[activeStep].question,
     });
 
